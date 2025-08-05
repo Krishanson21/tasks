@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishan Tiwari - Computer Science Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #2c2c2c;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(44, 44, 44, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4a90e2;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="grad"><stop offset="0%" stop-color="%234a90e2" stop-opacity="0.1"/><stop offset="100%" stop-color="%23000" stop-opacity="0"/></radialGradient></defs><rect width="100" height="100" fill="url(%23grad)"/></svg>');
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #4a90e2;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .profile-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            border-radius: 15px; 
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .download-resume {
+            display: inline-block;
+            background: #4a90e2;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .download-resume:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        /* Skills & Projects Combined Section */
+        .skills-projects {
+            padding: 6rem 0;
+            background: #2c2c2c;
+        }
+
+        .skills-projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #fff;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            color: #4a90e2;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(74, 144, 226, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-item {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .project-title {
+            color: #4a90e2;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 3rem 0;
+            background: #f8f9fa;
+            color: #333;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #4a90e2;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-info:hover {
+            color: #4a90e2;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container,
+            .about-container,
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .profile-image,
+            .about-image {
+                width: 250px;
+                height: 250px;
+                margin: 0 auto;
+            }
+
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 6rem 0;
+            }
+
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Online Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT ME</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT US</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">KRISHAN TIWARI</h1>
+                <p class="hero-subtitle">
+                    Hi, I am a Computer Science Engineering student and aspiring developer. 
+                    I create innovative digital experiences through interactive design and efficient programming, 
+                    dedicated to building immersive digital solutions.
+                </p>
+                <a href="#contact" class="cta-button">Hire Me</a>
+            </div>
+            <div class="hero-image">
+                <div class="profile-image">
+                    <img src="2.jpg" alt="image is not loding">
+                    <!-- 📸 Your Photo Here<br>
+                    <small>(Upload your professional image)</small> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>ABOUT ME</h2>
+                <p>
+                    I am a B.Tech Computer Science Engineering student at ABES Engineering College, Ghaziabad, 
+                    with a passion for creating engaging interactive experiences. My expertise spans web development, 
+                    game development, and AI applications.
+                </p>
+                <p>
+                    With certifications in HTML5, CSS, and Python from Infosys Springboard, I combine technical 
+                    skills with creative problem-solving. Beyond coding, I enjoy gaming, content creation, 
+                    and designing board games.
+                </p>
+                <a href="k_T_resume.pdf" class="download-resume" download>DOWNLOAD RESUME</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Projects Section -->
+    <section id="skills" class="skills-projects">
+        <div class="skills-projects-container">
+            <h2 class="section-title">SKILLS & PROJECTS</h2>
+            <div class="content-grid">
+                <div>
+                    <h3 style="color: #4a90e2; margin-bottom: 2rem; font-size: 1.5rem;">Technical Skills</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">HTML & CSS</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">React</div>
+                        <div class="skill-item">Node.js</div>
+                        <div class="skill-item">Next.js</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">C Programming</div>
+                        <div class="skill-item">Unity Engine</div>
+                        <div class="skill-item">Git</div>
+                        <div class="skill-item">WordPress</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #4a90e2; margin-bottom: 2rem; font-size: 1.5rem;">Featured Projects</h3>
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <div class="project-title">Store Automation App - College Canteen</div>
+                            <div class="project-description">
+                                Smart inventory and billing system to automate college canteen operations with 
+                                real-time billing and stock management.
+                            </div>
+                            <div class="project-tech">Feb 2025 – Apr 2025</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">AI Agent for Blog Ideas</div>
+                            <div class="project-description">
+                                AI-powered assistant that generates structured blog frameworks with React, 
+                                featuring prompt chaining and dynamic form generation.
+                            </div>
+                            <div class="project-tech">Mar 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title" style="color: #2c3e50;">GET IN TOUCH</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <a href="mailto:krishantson21@gmail.com" class="contact-info">krishantson21@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <a href="tel:+917011677404" class="contact-info">+91 7011677404</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <a href="https://github.com/Krishanson21" class="contact-info" target="_blank">GitHub Profile</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🏆</div>
+                    <a href="https://hackerrank.com/profile/CSEB22b0101144" class="contact-info" target="_blank">HackerRank</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-container">
+            <p>&copy; 2024 Krishan Tiwari. All rights reserved. Built with passion and lots of ☕</p>
+        </div>
+    </footer>
+</body>
+</html>
